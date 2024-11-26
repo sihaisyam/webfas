@@ -24,5 +24,23 @@ class User{
         $stmt->execute();
         return $stmt;
     }
+
+    public function registration(){
+        $sqlQuery = "INSERT INTO ". $this->db_table . " (username, email, password)
+                    VALUES ('". $this->username . "', '". $this->email . "', 
+                    '". $this->pass . "');";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function login(){
+        $sqlQuery = "SELECT * FROM ". $this->db_table . 
+                    " WHERE email ='". $this->email . "' AND
+                    password = '". $this->pass . "';";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>

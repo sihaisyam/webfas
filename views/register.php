@@ -26,18 +26,18 @@
 <body>
     <div class="register-form">
         <h2 class="text-center mb-4">Registrasi</h2>
-        <form>
+        <form method="POST" action="../api/auth/registration.php">
             <div class="mb-3">
-                <label for="nama" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
+                <label for="username" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan nama lengkap">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Masukkan password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
             </div>
             <button type="submit" class="btn btn-primary btn-block">Daftar</button>
         </form>

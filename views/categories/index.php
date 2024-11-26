@@ -1,12 +1,12 @@
 <?php
 
-include_once '../../config/Database.php';
-include_once '../../models/user.php';
+include_once '../../config/database.php';
+include_once '../../models/category.php';
 
 $database = new Database();
 $db = $database->getConnection();
-$user = new User($db);
-$result = $user->getUsers();
+$category = new Category($db);
+$result = $category->getCategories();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ $result = $user->getUsers();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users | SIMAFAS</title>
+    <title>Categories | SIMAFAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 
@@ -29,18 +29,18 @@ $result = $user->getUsers();
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
                         <th>Created At</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($result->fetchAll() as $key => $item) { ?>
                         <tr>
-                            <td><?php echo $item['username']; ?></td>
-                            <td><?= $item['email']; ?></td>
-                            <td><?= $item['role']; ?></td>
+                            <td><?php echo $item['name']; ?></td>
+                            <td><?= $item['description']; ?></td>
+                            <td><?= $item['status']; ?></td>
                             <td><?= $item['created_at']; ?></td>
                         </tr>
                     <?php } ?>
