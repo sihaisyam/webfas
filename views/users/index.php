@@ -26,6 +26,12 @@ $result = $user->getUsers();
         ?>
 
         <div class="container mt-4">
+            <div class="row justify-content-end">
+                <div class="col-3 text-end">
+                    <a href="http://localhost:8080/webfas/views/users/create.php"
+                        class="btn btn-sm btn-success">Add Data</a>
+                </div>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -33,6 +39,7 @@ $result = $user->getUsers();
                         <th>Email</th>
                         <th>Role</th>
                         <th>Created At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +49,17 @@ $result = $user->getUsers();
                             <td><?= $item['email']; ?></td>
                             <td><?= $item['role']; ?></td>
                             <td><?= $item['created_at']; ?></td>
+                            <td>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                    action="http://localhost:8080/webfas/api/users/delete.php" method="POST">
+                                    <input type="hidden" id="id" name="id" value="<?= $item['id']; ?>">
+                                    <a href="http://localhost:8080/webfas/views/users/edit.php?id=<?= $item['id']; ?>"
+                                        class="btn btn-sm btn-warning">Edit</a>
+                                    <button type="submit"
+                                        class="btn btn-sm btn-danger">
+                                        Hapus</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php } ?>
                 </tbody>
